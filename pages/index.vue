@@ -1,32 +1,29 @@
 <script setup lang="ts">
-await new Promise((resolve) => setTimeout(resolve, 10))
+definePageMeta({ middleware: 'auth', auth: { guestRedirectTo: '/login' } })
 
-const { signIn, signOut, session, status, cookies, user, sessionToken } =
-  useAuth()
-
+const { signOut, user } = useAuth()
 const { data: stats } = await useFetch('/api/spotify/stats', { lazy: true })
 
 const active = useState()
 </script>
 
 <template>
-  <div class="flex gap-2 mb-10">
+  <div class="flex gap-2 mb-10 justify-between">
     <button
-      v-if="status !== 'authenticated'"
-      @click="signIn('spotify')"
-      class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
-    >
-      Sign In
-    </button>
-    <button
-      v-else
       @click="signOut()"
       class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
     >
       Sign Out
     </button>
+    <img
+      v-if="user?.image"
+      :src="user?.image"
+      alt="profile image"
+      class="h-10 w-10 rounded-full"
+    />
   </div>
-  <div v-if="status === 'authenticated'" class="grid gap-10">
+
+  <div v-if="user?.name" class="grid gap-10">
     <section>
       <h2 class="text-3xl font-bold mb-4">Recently Played</h2>
       <ol class="divide-y divide-gray-100">

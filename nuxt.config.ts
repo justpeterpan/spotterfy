@@ -3,9 +3,11 @@ import { resolve } from 'node:path'
 export default defineNuxtConfig({
   modules: ['@hebilicious/authjs-nuxt', '@nuxtjs/tailwindcss'],
   nitro: {
-    routeRules: {
-      '/': { ssr: true, prerender: true },
-    },
+    preset: 'bun',
+  },
+  authJs: {
+    baseUrl: process.env.NEXTAUTH_URL,
+    verifyClientOnEveryRequest: true,
   },
   experimental: {
     viewTransition: true,
@@ -22,7 +24,6 @@ export default defineNuxtConfig({
     public: {
       authJs: {
         baseUrl: process.env.NUXT_NEXTAUTH_URL,
-        verifyClientOnEveryRequest: true,
       },
     },
   },
