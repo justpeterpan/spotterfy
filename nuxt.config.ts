@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 export default defineNuxtConfig({
   modules: ['@hebilicious/authjs-nuxt', '@nuxtjs/tailwindcss'],
   nitro: {
-    preset: 'bun',
+    preset: 'vercel',
   },
   authJs: {
     baseUrl: process.env.NEXTAUTH_URL,
