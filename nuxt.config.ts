@@ -6,9 +6,14 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
     '@nuxtjs/html-validator',
+    '@nuxtjs/color-mode',
   ],
   nitro: {
     preset: 'vercel',
+    experimental: {
+      openAPI: true,
+    },
+    minify: true,
   },
   app: {
     head: {
@@ -49,5 +54,8 @@ export default defineNuxtConfig({
   },
   alias: {
     cookie: resolve(__dirname, 'node_modules/cookie'),
+  },
+  colorMode: {
+    classSuffix: '',
   },
 })

@@ -1,3 +1,5 @@
 import { Config } from 'tailwindcss'
 
-export default {} satisfies Partial<Config>
+export default {
+  darkMode: 'class',
+} satisfies Partial<Config>

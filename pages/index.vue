@@ -29,7 +29,7 @@ const active = useState()
   <div v-if="user?.name" class="grid gap-10">
     <section>
       <h1 class="text-3xl font-bold mb-4">Recently Played</h1>
-      <ol class="divide-y divide-gray-100">
+      <ol class="divide-y divide-gray-100 dark:divide-[#1e1e1e]">
         <li v-for="(songs, index) of stats?.recentlyPlayed.items">
           <NuxtLink
             :to="`/track/${songs.track.id}`"
