@@ -1,9 +1,23 @@
 import { resolve } from 'node:path'
 
 export default defineNuxtConfig({
-  modules: ['@hebilicious/authjs-nuxt', '@nuxtjs/tailwindcss', '@nuxt/image'],
+  modules: [
+    '@hebilicious/authjs-nuxt',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/image',
+    '@nuxtjs/html-validator',
+  ],
   nitro: {
     preset: 'vercel',
+  },
+  app: {
+    head: {
+      charset: 'utf-8',
+      htmlAttrs: {
+        lang: 'en-US',
+      },
+      title: 'Recently Played',
+    },
   },
   authJs: {
     baseUrl: process.env.NEXTAUTH_URL,
@@ -26,6 +40,9 @@ export default defineNuxtConfig({
         baseUrl: process.env.NUXT_NEXTAUTH_URL,
       },
     },
+  },
+  htmlValidator: {
+    logLevel: 'verbose',
   },
   image: {
     domains: ['i.scdn.co'],

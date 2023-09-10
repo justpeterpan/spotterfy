@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxtjs/html-validator": "^1.5.2",
     "nuxt": "^3.7.1"
   },
   "dependencies": {

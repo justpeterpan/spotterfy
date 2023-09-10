@@ -10,6 +10,7 @@ const active = useState()
 <template>
   <div class="flex gap-2 mb-10 justify-between">
     <button
+      type="button"
       @click="signOut()"
       class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
     >
@@ -27,7 +28,7 @@ const active = useState()
 
   <div v-if="user?.name" class="grid gap-10">
     <section>
-      <h2 class="text-3xl font-bold mb-4">Recently Played</h2>
+      <h1 class="text-3xl font-bold mb-4">Recently Played</h1>
       <ol class="divide-y divide-gray-100">
         <li v-for="(songs, index) of stats?.recentlyPlayed.items">
           <NuxtLink
