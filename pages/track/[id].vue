@@ -1,15 +1,12 @@
 <template>
-  <Detail v-if="track" :track="track" />
+  <Detail v-if="cachedTrack" :track="cachedTrack" />
   <NuxtLink to="/" class="text-4xl p-10 sm:p-0">←</NuxtLink>
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-const { data: track } = await useFetch(
-  `/api/spotify/track?id=${route.params.id}`,
-  {
-    key: `track-${route.params.id}`,
-    lazy: false,
-  }
-)
+const id = useRoute().params.id
+const tracks: Ref<SpotifyApi.UsersRecentlyPlayedTracksResponse> =
+  useState('tracks')
+const cachedTrack = tracks.value.items.find((item) => item.track.id === id)
+  ?.track
 </script>

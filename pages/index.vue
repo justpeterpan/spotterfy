@@ -6,8 +6,9 @@ const { data: tracks } = await useFetch('/api/spotify/stats', {
   key: 'overview',
   lazy: true,
 })
-
-const active = useState()
+const active = useState('active')
+const cachedTracks = useState('tracks')
+cachedTracks.value = tracks.value
 </script>
 
 <template>
