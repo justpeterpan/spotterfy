@@ -2,7 +2,10 @@
 definePageMeta({ middleware: 'auth', auth: { guestRedirectTo: '/login' } })
 
 const { signOut, user } = useAuth()
-const { data: stats } = await useFetch('/api/spotify/stats')
+const { data: stats } = await useFetch('/api/spotify/stats', {
+  key: 'overview',
+  lazy: true,
+})
 
 const active = useState()
 </script>

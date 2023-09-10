@@ -6,6 +6,10 @@
 <script setup lang="ts">
 const route = useRoute()
 const { data: track } = await useFetch(
-  `/api/spotify/track?id=${route.params.id}`
+  `/api/spotify/track?id=${route.params.id}`,
+  {
+    key: `track-${route.params.id}`,
+    lazy: true,
+  }
 )
 </script>
