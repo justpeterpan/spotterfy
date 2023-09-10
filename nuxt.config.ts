@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   },
   authJs: {
     baseUrl: process.env.NEXTAUTH_URL,
-    verifyClientOnEveryRequest: true,
+    verifyClientOnEveryRequest: false,
   },
   experimental: {
     viewTransition: true,
