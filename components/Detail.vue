@@ -29,7 +29,7 @@
 <script setup lang="ts">
 useHead({
   bodyAttrs: {
-    class: 'p-0 md:p-10',
+    class: '!p-0 md:p-10',
   },
 })
 
