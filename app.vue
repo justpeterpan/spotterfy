@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-[100svh] max-w-4xl mx-auto dark:text-white">
+  <div class="max-w-4xl mx-auto dark:text-white">
     <NuxtPage />
   </div>
 </template>

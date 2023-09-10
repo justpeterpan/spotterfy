@@ -1,13 +1,13 @@
 <template>
-  <div class="flex flex-col md:flex-row gap-6 mb-6">
+  <div class="flex flex-col sm:flex-row gap-6 mb-6">
     <NuxtImg
       :src="track?.album.images[0].url"
       alt="album art"
-      class="md:w-4/6 md:max-h-[75vh] object-cover md:rounded md:shadow-md"
+      class="sm:w-4/6 sm:max-h-[75vh] object-cover sm:rounded sm:shadow-md"
       format="webp"
       quality="50"
     />
-    <section class="flex flex-col p-10 md:p-0">
+    <section class="flex flex-col p-10 sm:p-0">
       <ul class="font-thin">
         <li class="font-bold">
           {{ track?.artists[0].name }} - {{ track?.name }}
@@ -29,7 +29,7 @@
 <script setup lang="ts">
 useHead({
   bodyAttrs: {
-    class: '!p-0 md:p-10',
+    class: 'sm:!p-10 !p-0',
   },
 })
 

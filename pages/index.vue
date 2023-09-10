@@ -1,14 +1,15 @@
 <script setup lang="ts">
 definePageMeta({ middleware: 'auth', auth: { guestRedirectTo: '/login' } })
 
-const { signOut, user } = useAuth()
-const { data: tracks } = await useFetch('/api/spotify/stats', {
-  key: 'overview',
-  lazy: true,
-})
 const active = useState('active')
-const cachedTracks = useState('tracks')
-cachedTracks.value = tracks.value
+const { signOut, user } = useAuth()
+const cachedTracks: Ref<
+  SpotifyApi.UsersRecentlyPlayedTracksResponse | undefined
+> = useState('tracks')
+
+onBeforeMount(async () => {
+  cachedTracks.value = await $fetch('/api/spotify/stats')
+})
 </script>
 
 <template>
@@ -34,7 +35,7 @@ cachedTracks.value = tracks.value
     <section>
       <h1 class="text-3xl font-bold mb-4">Recently Played</h1>
       <ol class="divide-y divide-gray-100 dark:divide-[#1e1e1e]">
-        <li v-for="(songs, index) of tracks?.items">
+        <li v-for="(songs, index) of cachedTracks?.items">
           <NuxtLink
             :to="`/track/${songs.track.id}`"
             class="flex justify-between items-center gap-x-6 py-5"
@@ -75,10 +76,8 @@ cachedTracks.value = tracks.value
 <style scoped>
 img.active {
   view-transition-name: selected-track;
-  contain: layout;
 }
 div.active {
   view-transition-name: selected-title;
-  contain: layout;
 }
 </style>
