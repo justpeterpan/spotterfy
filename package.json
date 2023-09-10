@@ -22,6 +22,8 @@
   "dependencies": {
     "@auth/core": "^0.14.0",
     "@hebilicious/authjs-nuxt": "^0.3.0",
-    "@nuxtjs/tailwindcss": "^6.8.0"
+    "@nuxt/image": "rc",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "sharp": "^0.32.5"
   }
 }

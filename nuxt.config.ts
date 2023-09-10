@@ -1,7 +1,7 @@
 import { resolve } from 'node:path'
 
 export default defineNuxtConfig({
-  modules: ['@hebilicious/authjs-nuxt', '@nuxtjs/tailwindcss'],
+  modules: ['@hebilicious/authjs-nuxt', '@nuxtjs/tailwindcss', '@nuxt/image'],
   nitro: {
     preset: 'vercel',
   },
@@ -26,6 +26,9 @@ export default defineNuxtConfig({
         baseUrl: process.env.NUXT_NEXTAUTH_URL,
       },
     },
+  },
+  image: {
+    domains: ['i.scdn.co'],
   },
   alias: {
     cookie: resolve(__dirname, 'node_modules/cookie'),

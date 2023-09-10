@@ -15,11 +15,13 @@ const active = useState()
     >
       Sign Out
     </button>
-    <img
+    <NuxtImg
       v-if="user?.image"
       :src="user?.image"
       alt="profile image"
       class="h-10 w-10 rounded-full"
+      format="webp"
+      quality="50"
     />
   </div>
 
@@ -35,17 +37,19 @@ const active = useState()
           >
             <div class="flex min-w-0 gap-x-4 items-center">
               <div class="text-2xl mr-2 text-gray-400">0{{ index + 1 }}</div>
-              <img
+              <NuxtImg
                 :src="songs.track.album.images[0].url"
                 :alt="songs.track.name"
                 class="h-14 w-14 rounded-sm shadow-md"
                 :class="{ active: active === songs.track.id }"
+                format="webp"
+                quality="50"
               />
               <div :class="{ active: active === songs.track.id }">
                 {{ songs.track.artists[0].name }} - {{ songs.track.name }}
               </div>
             </div>
-            <div>
+            <div class="hidden sm:block">
               {{
                 new Date(songs.played_at).toLocaleString('en-US', {
                   year: 'numeric',
