@@ -2,7 +2,7 @@
 definePageMeta({ middleware: 'auth', auth: { guestRedirectTo: '/login' } })
 
 const { signOut, user } = useAuth()
-const { data: stats } = await useFetch('/api/spotify/stats', {
+const { data: tracks } = await useFetch('/api/spotify/stats', {
   key: 'overview',
   lazy: true,
 })
@@ -33,7 +33,7 @@ const active = useState()
     <section>
       <h1 class="text-3xl font-bold mb-4">Recently Played</h1>
       <ol class="divide-y divide-gray-100 dark:divide-[#1e1e1e]">
-        <li v-for="(songs, index) of stats?.recentlyPlayed.items">
+        <li v-for="(songs, index) of tracks?.items">
           <NuxtLink
             :to="`/track/${songs.track.id}`"
             class="flex justify-between items-center gap-x-6 py-5"

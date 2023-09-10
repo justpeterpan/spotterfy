@@ -1,6 +1,6 @@
 <template>
   <Detail v-if="track" :track="track" />
-  <NuxtLink to="/" class="text-4xl">←</NuxtLink>
+  <NuxtLink to="/" class="text-4xl p-10 sm:p-0">←</NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -9,7 +9,7 @@ const { data: track } = await useFetch(
   `/api/spotify/track?id=${route.params.id}`,
   {
     key: `track-${route.params.id}`,
-    lazy: true,
+    lazy: false,
   }
 )
 </script>

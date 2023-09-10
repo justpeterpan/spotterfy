@@ -14,14 +14,6 @@ export default defineEventHandler(async (event) => {
     headers: { Authorization: `Bearer ${token?.access_token}` },
   })
 
-  const topItems: SpotifyApi.UsersTopTracksResponse = await $sp('/top/tracks', {
-    query: {
-      time_range: 'short_term',
-      limit: 5,
-      offset: 0,
-    },
-  })
-
   const recentlyPlayed: SpotifyApi.UsersRecentlyPlayedTracksResponse =
     await $sp('/player/recently-played', {
       query: {
@@ -30,5 +22,5 @@ export default defineEventHandler(async (event) => {
       },
     })
 
-  return { topItems, recentlyPlayed }
+  return recentlyPlayed
 })

@@ -1,13 +1,13 @@
 <template>
-  <div class="flex gap-6 mb-6">
+  <div class="flex flex-col md:flex-row gap-6 mb-6">
     <NuxtImg
       :src="track?.album.images[0].url"
       alt="album art"
-      class="w-1/2 max-h-[75vh] object-cover rounded shadow-md"
+      class="md:w-4/6 md:max-h-[75vh] object-cover md:rounded md:shadow-md"
       format="webp"
       quality="50"
     />
-    <section class="flex flex-col">
+    <section class="flex flex-col p-10 md:p-0">
       <ul class="font-thin">
         <li class="font-bold">
           {{ track?.artists[0].name }} - {{ track?.name }}
@@ -27,6 +27,12 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  bodyAttrs: {
+    class: 'p-0 md:p-10',
+  },
+})
+
 defineProps<{
   track: SpotifyApi.TrackObjectFull
 }>()
