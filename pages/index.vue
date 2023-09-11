@@ -6,9 +6,13 @@ const { signOut, user } = useAuth()
 const cachedTracks: Ref<
   SpotifyApi.UsersRecentlyPlayedTracksResponse | undefined
 > = useState('tracks')
+const followedArtists: Ref<
+  SpotifyApi.UsersFollowedArtistsResponse | undefined
+> = useState('follows')
 
 onBeforeMount(async () => {
   cachedTracks.value = await $fetch('/api/spotify/plays')
+  followedArtists.value = await $fetch('/api/spotify/follows')
 })
 </script>
 
@@ -69,6 +73,33 @@ onBeforeMount(async () => {
           </NuxtLink>
         </li>
       </ol>
+    </section>
+    <section>
+      <h2 class="text-3xl font-bold mb-4">Following</h2>
+      <ul>
+        <li
+          v-for="artist of followedArtists?.artists.items"
+          class="flex justify-between flex-row-reverse py-4 border-b border-gray-700 border-dotted"
+        >
+          <img
+            :src="artist.images[0]?.url"
+            :alt="artist.name"
+            class="w-20 h-20 rounded-sm shadow-sm object-cover"
+          />
+          <div class="max-w-xs font-thin">
+            <NuxtLink :to="artist.external_urls.spotify" class="font-bold">{{
+              artist.name
+            }}</NuxtLink>
+            <br />
+            Followers: {{ artist.followers.total }}
+            <br />
+            <span v-if="artist.genres.length"
+              >Genres:
+              {{ artist.genres.length ? artist.genres : undefined }}</span
+            >
+          </div>
+        </li>
+      </ul>
     </section>
   </div>
 </template>
