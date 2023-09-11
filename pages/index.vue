@@ -8,7 +8,7 @@ const cachedTracks: Ref<
 > = useState('tracks')
 
 onBeforeMount(async () => {
-  cachedTracks.value = await $fetch('/api/spotify/stats')
+  cachedTracks.value = await $fetch('/api/spotify/plays')
 })
 </script>
 

@@ -3,7 +3,7 @@
     <NuxtImg
       :src="track?.album.images[0].url"
       alt="album art"
-      class="sm:w-4/6 sm:max-h-[75vh] object-cover sm:rounded sm:shadow-md"
+      class="sm:w-4/6 object-cover sm:rounded sm:shadow-md"
       format="webp"
       quality="50"
     />
