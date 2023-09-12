@@ -26,13 +26,13 @@ async function handleSpotifyRequest(
   })
 }
 
-export async function $sp(
+export async function $sp<T>(
   event: H3Event,
   endpoint: string,
   query?: QueryParams
-) {
+): Promise<T | undefined> {
   const user = await getUserFromSession(event)
 
   if (!user?.access_token) return undefined
-  return handleSpotifyRequest(endpoint, user.access_token, query)
+  return handleSpotifyRequest(endpoint, user.access_token, query) as T
 }
