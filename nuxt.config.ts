@@ -30,7 +30,6 @@ export default defineNuxtConfig({
   },
   experimental: {
     viewTransition: true,
-    typedPages: true,
   },
   devtools: { enabled: false },
   runtimeConfig: {

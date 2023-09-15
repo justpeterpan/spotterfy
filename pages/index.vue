@@ -81,7 +81,7 @@ onBeforeMount(async () => {
           v-for="artist of followedArtists?.artists.items"
           class="flex justify-between flex-row-reverse py-4 border-b border-gray-700 border-dotted"
         >
-          <img
+          <NuxtImg
             :src="artist.images[0]?.url"
             :alt="artist.name"
             class="w-20 h-20 rounded-sm shadow-sm object-cover"
