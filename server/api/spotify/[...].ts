@@ -102,13 +102,14 @@ router.get(
     )
     const allReleases = await Promise.all(allReleasesPromises)
 
-    const groupedByArtist = {}
+    const groupedByArtist = []
 
     followedArtists![0]?.followedArtists.forEach((artist, index) => {
-      groupedByArtist[artist.artist.artistName] = allReleases[index]
+      groupedByArtist.push({
+        name: artist.artist.artistName,
+        releases: allReleases[index].items,
+      })
     })
-
-    console.log(groupedByArtist)
 
     if (followedArtists?.length) return groupedByArtist
     return {}
