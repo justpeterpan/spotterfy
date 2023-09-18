@@ -18,7 +18,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/html-validator": "^1.5.2",
-    "nuxt": "^3.7.2",
+    "nuxt": "^3.7.3",
     "prisma": "^5.2.0"
   },
   "dependencies": {
@@ -32,7 +32,7 @@
     "p-limit": "^4.0.0",
     "sharp": "^0.32.5"
   },
-	  "trustedDependencies": [
-     "sharp"
+  "trustedDependencies": [
+    "sharp"
   ]
 }

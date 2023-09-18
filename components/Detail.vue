@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col sm:flex-row gap-6 mb-6">
+  <div v-if="track?.name" class="flex flex-col sm:flex-row gap-6 mb-6">
     <NuxtImg
       :src="track?.album.images[0].url"
       alt="album art"
@@ -34,7 +34,7 @@ useHead({
 })
 
 defineProps<{
-  track: SpotifyApi.TrackObjectFull
+  track: SpotifyApi.TrackObjectFull | null
 }>()
 
 function formattedDuration(durationInMs: number | undefined) {

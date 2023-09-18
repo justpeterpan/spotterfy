@@ -57,8 +57,7 @@ model VerificationToken {
 }
 
 model Artist {
-  id              Int            @id @default(autoincrement())
-  spotifyArtistId String // Unique Spotify Artist ID
+  spotifyArtistId String         @id
   artistName      String
   releases        Release[]
   followers       ArtistFollow[]
@@ -67,7 +66,7 @@ model Artist {
 }
 
 model Release {
-  id                Int      @id @default(autoincrement())
+  spotifyReleaseId  String   @id
   artist            Artist   @relation(fields: [artistId], references: [spotifyArtistId])
   artistId          String
   releaseName       String
